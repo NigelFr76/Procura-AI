@@ -150,17 +150,17 @@ export default function App() {
               <h2 className="text-lg font-semibold text-white">Execution Roadmap: Phases 1 to 12</h2>
               <p className="text-xs text-slate-400">Strictly following IMPLEMENTATION_PLAN.md</p>
             </div>
-            <span className="text-xs text-sky-400 font-mono">2 of 12 Complete</span>
+            <span className="text-xs text-sky-400 font-mono">4 of 12 Complete</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
             <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-2">
               <div className="flex items-center space-x-2 text-emerald-400 font-medium">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>Phase 1: Infra & Scaffold</span>
               </div>
               <p className="text-xs text-slate-400">
-                Docker Compose, PostgreSQL pgvector init, uv backend virtualenv, FastAPI app, pytest suite, and React Vite frontend.
+                Docker Compose, PostgreSQL pgvector init, uv backend virtualenv, FastAPI app, and React Vite.
               </p>
             </div>
 
@@ -170,19 +170,39 @@ export default function App() {
                 <span>Phase 2: Database & Models</span>
               </div>
               <p className="text-xs text-slate-400">
-                SQLAlchemy 2.x async declarative models, tenant isolation context, Alembic migrations for 16 core entities.
+                SQLAlchemy 2.x async models, tenant isolation context, Alembic migrations for 16 core entities.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl border border-sky-500/40 bg-sky-950/20 space-y-2 relative overflow-hidden">
-              <div className="flex items-center space-x-2 text-sky-400 font-medium">
-                <ArrowRight className="w-4 h-4 text-sky-400 animate-pulse" />
+            <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-2">
+              <div className="flex items-center space-x-2 text-emerald-400 font-medium">
+                <CheckCircle2 className="w-4 h-4" />
                 <span>Phase 3: Scoring Engine</span>
               </div>
               <p className="text-xs text-slate-400">
-                Landed cost calculator, criterion normalizers, eligibility gate, and weighted scoring domain services.
+                Landed cost, bounded criterion normalizers, eligibility gate, and deterministic tie-breaking.
               </p>
             </div>
+
+            <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-2">
+              <div className="flex items-center space-x-2 text-emerald-400 font-medium">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Phase 4: Ingestion & OCR</span>
+              </div>
+              <p className="text-xs text-slate-400">
+                PyMuPDF parser, normalized coordinate bounding boxes, prompt injection detection, and RRF retrieval.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl border border-sky-500/40 bg-sky-950/20 space-y-2 relative overflow-hidden">
+            <div className="flex items-center space-x-2 text-sky-400 font-medium">
+              <ArrowRight className="w-4 h-4 text-sky-400 animate-pulse" />
+              <span>Next Up: Phase 5 (LLM Abstraction Layer & Core Intake Agents 1, 2, 3)</span>
+            </div>
+            <p className="text-xs text-slate-400">
+              Provider-agnostic LLM interface, Requirement Analysis Agent, Vendor Discovery Agent, and Quotation Analysis Agent with evidence coordinate linking.
+            </p>
           </div>
         </div>
       </main>
