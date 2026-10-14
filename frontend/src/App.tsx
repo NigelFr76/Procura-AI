@@ -150,10 +150,10 @@ export default function App() {
               <h2 className="text-lg font-semibold text-white">Execution Roadmap: Phases 1 to 12</h2>
               <p className="text-xs text-slate-400">Strictly following IMPLEMENTATION_PLAN.md</p>
             </div>
-            <span className="text-xs text-sky-400 font-mono">4 of 12 Complete</span>
+            <span className="text-xs text-sky-400 font-mono">5 of 12 Complete</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
             <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-2">
               <div className="flex items-center space-x-2 text-emerald-400 font-medium">
                 <CheckCircle2 className="w-4 h-4" />
@@ -193,15 +193,25 @@ export default function App() {
                 PyMuPDF parser, normalized coordinate bounding boxes, prompt injection detection, and RRF retrieval.
               </p>
             </div>
+
+            <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-2">
+              <div className="flex items-center space-x-2 text-emerald-400 font-medium">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Phase 5: Intake Agents (1, 2, 3)</span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Requirement Analysis, Vendor Discovery, and Quotation Analysis Agents with evidence coordinate citations.
+              </p>
+            </div>
           </div>
 
           <div className="p-4 rounded-xl border border-sky-500/40 bg-sky-950/20 space-y-2 relative overflow-hidden">
             <div className="flex items-center space-x-2 text-sky-400 font-medium">
               <ArrowRight className="w-4 h-4 text-sky-400 animate-pulse" />
-              <span>Next Up: Phase 5 (LLM Abstraction Layer & Core Intake Agents 1, 2, 3)</span>
+              <span>Next Up: Phase 6 (Compliance & Risk Assessment Agents 4, 5)</span>
             </div>
             <p className="text-xs text-slate-400">
-              Provider-agnostic LLM interface, Requirement Analysis Agent, Vendor Discovery Agent, and Quotation Analysis Agent with evidence coordinate linking.
+              Deterministic compliance rule gating + LLM clause extraction; historical risk analytics + qualitative operational risk synthesis.
             </p>
           </div>
         </div>
