@@ -7,6 +7,8 @@ from app.agents.quotation_agent import QuotationAnalysisAgent
 from app.agents.compliance_agent import ComplianceAgent
 from app.agents.risk_agent import RiskAssessmentAgent
 from app.agents.explanation_agent import DecisionExplanationAgent
+from app.agents.negotiation_agent import NegotiationSimulationAgent
+from app.agents.scenario_agent import ScenarioSimulationAgent
 
 
 def __getattr__(name: str):
@@ -25,6 +27,8 @@ __all__ = [
     "ComplianceAgent",
     "RiskAssessmentAgent",
     "DecisionExplanationAgent",
+    "NegotiationSimulationAgent",
+    "ScenarioSimulationAgent",
     "DecisionCoordinator",
     "coordinator",
 ]

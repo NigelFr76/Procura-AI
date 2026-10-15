@@ -69,6 +69,10 @@ def create_application() -> FastAPI:
             },
         )
 
+    # Mount v1 REST API routes
+    from app.api.v1.api import api_router
+    app.include_router(api_router, prefix=settings.API_V1_STR)
+
     return app
 
 
