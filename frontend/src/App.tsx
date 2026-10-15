@@ -61,7 +61,7 @@ export default function App() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span>Phase 1 Active: Infrastructure & Scaffold</span>
+              <span>Phase 7 Active: LangGraph Multi-Agent Orchestrator</span>
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function App() {
               <h2 className="text-lg font-semibold text-white">Execution Roadmap: Phases 1 to 12</h2>
               <p className="text-xs text-slate-400">Strictly following IMPLEMENTATION_PLAN.md</p>
             </div>
-            <span className="text-xs text-sky-400 font-mono">5 of 12 Complete</span>
+            <span className="text-xs text-sky-400 font-mono">7 of 12 Complete</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
@@ -203,15 +203,35 @@ export default function App() {
                 Requirement Analysis, Vendor Discovery, and Quotation Analysis Agents with evidence coordinate citations.
               </p>
             </div>
+
+            <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-2">
+              <div className="flex items-center space-x-2 text-emerald-400 font-medium">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Phase 6: Compliance & Risk (4, 5)</span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Deterministic compliance rule gating + clause verification; multi-dimensional risk telemetry with sparse data penalties.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-2 lg:col-span-3">
+              <div className="flex items-center space-x-2 text-emerald-400 font-medium">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Phase 7: LangGraph Multi-Agent Orchestrator & HITL (8, 9)</span>
+              </div>
+              <p className="text-xs text-slate-400">
+                StateGraph orchestration, parallel vendor evaluation fan-out/fan-in, guarded Decision Explanation Agent (8), Decision Coordinator (9), and human approval interrupt gate.
+              </p>
+            </div>
           </div>
 
           <div className="p-4 rounded-xl border border-sky-500/40 bg-sky-950/20 space-y-2 relative overflow-hidden">
             <div className="flex items-center space-x-2 text-sky-400 font-medium">
               <ArrowRight className="w-4 h-4 text-sky-400 animate-pulse" />
-              <span>Next Up: Phase 6 (Compliance & Risk Assessment Agents 4, 5)</span>
+              <span>Next Up: Phase 8 (Negotiation Simulation & What-If Scenario Simulation Engine - Agents 6, 7)</span>
             </div>
             <p className="text-xs text-slate-400">
-              Deterministic compliance rule gating + LLM clause extraction; historical risk analytics + qualitative operational risk synthesis.
+              Simulated vendor counteroffers, baseline snapshot immutability, parameter overrides, differential calculators, and rank shift explanations.
             </p>
           </div>
         </div>
