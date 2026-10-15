@@ -15,5 +15,18 @@ async def simulate_negotiation(
     payload: NegotiationSimInput,
     tenant_id: uuid.UUID = Depends(get_tenant_id),
 ) -> NegotiationSimResult:
-    """Simulate multi-round vendor counteroffers within bounded elasticity frontiers."""
-    return NegotiationSimulationAgent.simulate(payload)
+    result = NegotiationSimulationAgent.simulate(payload)
+
+    from app.services.audit.audit_service import AuditAction, AuditService
+    AuditService.record_event(
+        tenant_id=str(tenant_id),
+        user_id="procurement-buyer",
+        action=AuditAction.NEGOTIATION_COMPLETED,
+        payload={
+            "vendor_name": payload.vendor_name,
+            "target_price_discount_pct": payload.target_price_discount_pct,
+            "projected_savings_pct": result.projected_savings_pct,
+        },
+    )
+
+    return result

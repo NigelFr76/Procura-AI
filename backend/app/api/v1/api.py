@@ -3,6 +3,7 @@
 from fastapi import APIRouter
 
 from app.api.v1.endpoints import (
+    audit,
     documents,
     evaluations,
     events,
@@ -19,3 +20,5 @@ api_router.include_router(negotiations.router, prefix="/negotiations", tags=["Ne
 api_router.include_router(requests.router, prefix="/requests", tags=["Requests"])
 api_router.include_router(documents.router, prefix="/documents", tags=["Documents"])
 api_router.include_router(events.router, prefix="/events", tags=["Events"])
+api_router.include_router(audit.router, prefix="/audit", tags=["Audit"])
+

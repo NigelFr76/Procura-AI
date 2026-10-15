@@ -14,7 +14,7 @@ from app.schemas.risk import RiskInput
 def parallel_eval_node(state: ProcurementEvaluationState) -> Dict[str, Any]:
     """Execute Agent 4 (Compliance) and Agent 5 (Risk) for all shortlisted vendors."""
     shortlisted = state.get("shortlisted_vendors", [])
-    quotations = {q["vendor_id"]: q for q in state.get("quotations", [])}
+    quotations = {str(q["vendor_id"]): q for q in state.get("quotations", [])}
     raw_rules = state.get("compliance_rules", [])
 
     # Convert rule dicts to ComplianceRuleInput objects
@@ -50,16 +50,19 @@ def parallel_eval_node(state: ProcurementEvaluationState) -> Dict[str, Any]:
 
     for v in shortlisted:
         v_id_str = v.get("vendor_id")
-        v_id = uuid.UUID(str(v_id_str))
+        try:
+            v_id = uuid.UUID(str(v_id_str))
+        except (ValueError, AttributeError):
+            v_id = uuid.uuid5(uuid.NAMESPACE_DNS, str(v_id_str) if v_id_str else "default-vendor")
         v_name = v.get("vendor_name", "Supplier")
-        quote = quotations.get(v_id_str, {})
+        quote = quotations.get(str(v_id_str), {})
 
         # 1. Evaluate Compliance (Agent 4)
         c_input = ComplianceInput(
             vendor_id=v_id,
             vendor_name=v_name,
             rules=rules_inputs,
-            held_certifications=v.get("held_certifications", []),
+            held_certifications=v.get("held_certifications") or v.get("certifications", []),
             quotation_terms={
                 "warranty_months": quote.get("warranty_months", 12),
                 "payment_terms": quote.get("payment_terms", "Net 30"),

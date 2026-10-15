@@ -31,6 +31,25 @@ async def upload_quotation_document(
         file_name=file.filename,
     )
 
+    from app.services.audit.audit_service import AuditAction, AuditService
+    audit_action = (
+        AuditAction.PROMPT_INJECTION_FLAGGED
+        if parsed.has_injection_risk
+        else AuditAction.DOCUMENT_INGESTED
+    )
+    AuditService.record_event(
+        tenant_id=str(tenant_id),
+        user_id="supplier-uploader",
+        action=audit_action,
+        payload={
+            "document_id": str(doc_id),
+            "file_name": file.filename,
+            "sha256": parsed.sha256,
+            "has_injection_risk": parsed.has_injection_risk,
+            "security_warnings": parsed.security_warnings,
+        },
+    )
+
     return {
         "document_id": doc_id,
         "file_name": file.filename,

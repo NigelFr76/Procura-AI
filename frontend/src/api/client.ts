@@ -5,6 +5,8 @@ import {
   NegotiationSimResult,
   DocumentUploadResponse,
   SSEAgentEvent,
+  AuditRecord,
+  AuditVerificationResult,
 } from '../types/procurement';
 
 const API_BASE = '/api/v1';
@@ -91,6 +93,17 @@ export const api = {
     return res.data;
   },
 
+  // Audit Ledger & Integrity
+  getAuditLogs: async (): Promise<AuditRecord[]> => {
+    const res = await apiClient.get<AuditRecord[]>('/audit/logs');
+    return res.data;
+  },
+
+  verifyAuditLedger: async (): Promise<AuditVerificationResult> => {
+    const res = await apiClient.get<AuditVerificationResult>('/audit/verify');
+    return res.data;
+  },
+
   // SSE Stream
   subscribeToSSE: (
     threadId: string,
@@ -118,3 +131,4 @@ export const api = {
     };
   },
 };
+

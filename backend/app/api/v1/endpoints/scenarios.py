@@ -16,5 +16,19 @@ async def simulate_scenario(
     payload: ScenarioRunInput,
     tenant_id: uuid.UUID = Depends(get_tenant_id),
 ) -> ScenarioRunResult:
-    """Execute What-If scenario simulation against an immutable baseline evaluation."""
-    return ScenarioSimulationAgent.run_simulation(payload)
+    result = ScenarioSimulationAgent.run_simulation(payload)
+
+    from app.services.audit.audit_service import AuditAction, AuditService
+    AuditService.record_event(
+        tenant_id=str(tenant_id),
+        user_id="scenario-analyst",
+        action=AuditAction.SCENARIO_SIMULATED,
+        payload={
+            "scenario_name": payload.scenario_name,
+            "baseline_evaluation_id": payload.baseline_evaluation_id,
+            "winner_displaced": result.winner_displaced,
+            "new_winner_name": result.new_winner_name,
+        },
+    )
+
+    return result

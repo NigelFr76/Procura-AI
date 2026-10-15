@@ -8,6 +8,7 @@ import { AgentTelemetryCard } from './components/agents/AgentTelemetryCard';
 import { ScorecardCard } from './components/evaluation/ScorecardCard';
 import { ScenarioStudioCard } from './components/scenarios/ScenarioStudioCard';
 import { NegotiationCard } from './components/negotiation/NegotiationCard';
+import { AuditLedgerCard } from './components/audit/AuditLedgerCard';
 import { ApprovalGateCard } from './components/approval/ApprovalGateCard';
 import { Scorecard, DecisionExplanation } from './types/procurement';
 import { api } from './api/client';
@@ -273,7 +274,10 @@ export default function App() {
           {/* Bento Card 6: Autonomous Negotiation Counteroffer Simulation (2 cols) */}
           <NegotiationCard />
 
-          {/* Bento Card 7: HITL Governance & Cryptographic Sign-Off Gate (4 cols full width) */}
+          {/* Bento Card 7: Tamper-Evident Cryptographic Audit Ledger & Chain Integrity (2 cols) */}
+          <AuditLedgerCard />
+
+          {/* Bento Card 8: HITL Governance & Cryptographic Sign-Off Gate (4 cols full width) */}
           <ApprovalGateCard
             threadId={threadId}
             explanation={decisionExplanation}

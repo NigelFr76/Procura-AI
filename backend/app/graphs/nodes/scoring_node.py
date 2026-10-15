@@ -67,7 +67,7 @@ def scoring_node(state: ProcurementEvaluationState) -> Dict[str, Any]:
             VendorQuotationInput(
                 vendor_id=v_id,
                 vendor_name=q.get("vendor_name", "Supplier"),
-                base_price=Decimal(str(q["base_price"])),
+                base_price=Decimal(str(q.get("base_price", q.get("total_price", "0.00")))),
                 freight_cost=Decimal(str(q.get("freight_cost", "0.00"))),
                 insurance_cost=Decimal(str(q.get("insurance_cost", "0.00"))),
                 tax_amount=Decimal(str(q.get("tax_amount", "0.00"))),

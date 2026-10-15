@@ -58,11 +58,42 @@ class DecisionCoordinator:
             "quotations": quotations or [],
         }
 
-        return execute_evaluation(
+        from app.services.audit.audit_service import AuditAction, AuditService
+        AuditService.record_event(
+            tenant_id=organization_id,
+            user_id="system-coordinator",
+            action=AuditAction.EVALUATION_STARTED,
+            payload={
+                "evaluation_id": eval_id,
+                "thread_id": t_id,
+                "budget_ceiling": budget_ceiling,
+                "currency": currency,
+            },
+        )
+
+        result = execute_evaluation(
             initial_state=initial_state,
             thread_id=t_id,
             graph=self.graph,
         )
+
+        if result.get("scorecard"):
+            sc = result["scorecard"]
+            scores_list = sc.get("scores") or sc.get("ranking", [])
+            winner_name = sc.get("recommended_vendor_name") or (scores_list[0].get("vendor_name") if scores_list else None)
+            fingerprint = sc.get("input_hash") or sc.get("scoring_fingerprint")
+            AuditService.record_event(
+                tenant_id=organization_id,
+                user_id="scoring-engine",
+                action=AuditAction.EVALUATION_SCORED,
+                payload={
+                    "evaluation_id": eval_id,
+                    "scoring_fingerprint": fingerprint,
+                    "winner": winner_name,
+                },
+            )
+
+        return result
 
     def submit_human_approval(
         self,
@@ -77,11 +108,31 @@ class DecisionCoordinator:
             "comments": comments,
             "approver_user_id": approver_user_id,
         }
-        return resume_evaluation(
+        resumed = resume_evaluation(
             thread_id=thread_id,
             approval_data=approval_payload,
             graph=self.graph,
         )
+
+        from app.services.audit.audit_service import AuditAction, AuditService
+        audit_action = (
+            AuditAction.HITL_APPROVAL_GRANTED
+            if action.upper() == "APPROVED"
+            else AuditAction.HITL_REJECTION_ISSUED
+        )
+        AuditService.record_event(
+            tenant_id=resumed.get("organization_id", "00000000-0000-0000-0000-000000000001"),
+            user_id=approver_user_id,
+            action=audit_action,
+            payload={
+                "thread_id": thread_id,
+                "action": action,
+                "comments": comments,
+                "signature_hash": resumed.get("signature_hash"),
+            },
+        )
+
+        return resumed
 
     def get_evaluation_state(self, thread_id: str) -> Dict[str, Any]:
         """Fetch current checkpointed state snapshot for a running or interrupted evaluation thread."""

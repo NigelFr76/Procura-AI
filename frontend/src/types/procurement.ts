@@ -138,3 +138,25 @@ export interface SSEAgentEvent {
   payload?: any;
   timestamp: string;
 }
+
+export interface AuditRecord {
+  record_id: string;
+  tenant_id: string;
+  timestamp: string;
+  event_type: string;
+  actor: string;
+  resource_type: string;
+  resource_id: string;
+  previous_hash: string;
+  current_hash: string;
+  payload: Record<string, any>;
+}
+
+export interface AuditVerificationResult {
+  tenant_id: string;
+  total_records: number;
+  chain_head_hash: string;
+  is_integrity_valid: boolean;
+  verification_error?: string | null;
+}
+

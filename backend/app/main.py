@@ -44,6 +44,11 @@ def create_application() -> FastAPI:
             allow_headers=["*"],
         )
 
+    # Production Hardening: Security Headers & Rate Limiting
+    from app.core.security import SecurityHeadersMiddleware, RateLimitMiddleware
+    app.add_middleware(SecurityHeadersMiddleware)
+    app.add_middleware(RateLimitMiddleware)
+
     @app.get("/", tags=["Root"])
     async def root_info() -> Dict[str, Any]:
         """Root API welcome & system information."""
