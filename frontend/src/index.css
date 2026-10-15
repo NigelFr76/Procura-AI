@@ -3,7 +3,77 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bento-bg: #0B0F17;
+    --bento-card: #0F172A;
+    --bento-peach: #FAD4C0;
+    --bento-steel: #80A1C1;
+  }
+
   body {
-    @apply bg-slate-950 text-slate-100 font-sans min-h-screen selection:bg-sky-500 selection:text-white;
+    @apply bg-[#0B0F17] text-slate-100 font-sans min-h-screen selection:bg-amber-200 selection:text-slate-900 overflow-x-hidden;
+  }
+
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B0F17;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1E293B;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+  }
+}
+
+@layer components {
+  /* Bento Card Container */
+  .bento-card {
+    @apply relative rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 p-5 sm:p-6 transition-all duration-300 hover:border-slate-700/80 shadow-bento hover:shadow-bento-hover overflow-hidden;
+  }
+
+  /* Bento Header / Badges */
+  .bento-badge-peach {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#FAD4C0]/10 text-[#FAD4C0] border border-[#FAD4C0]/20;
+  }
+
+  .bento-badge-steel {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#80A1C1]/10 text-[#80A1C1] border border-[#80A1C1]/20;
+  }
+
+  .bento-badge-success {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .bento-badge-warning {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20;
+  }
+
+  .bento-badge-danger {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20;
+  }
+
+  /* Numbers and Metrics */
+  .mono-number {
+    @apply font-mono tracking-tight text-white;
+  }
+
+  /* Subtle Gradient Accent Border */
+  .bento-border-highlight {
+    position: relative;
+  }
+  .bento-border-highlight::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(250, 212, 192, 0.4), transparent);
   }
 }
