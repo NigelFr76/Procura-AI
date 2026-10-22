@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     )
 
     # General App Settings
-    PROJECT_NAME: str = "AI Procurement & Vendor Intelligence Platform"
+    PROJECT_NAME: str = "Sourcyn - AI Procurement & Vendor Intelligence Platform"
     ENVIRONMENT: EnvironmentType = EnvironmentType.DEVELOPMENT
     API_V1_STR: str = "/api/v1"
     SECRET_KEY: str = "default-insecure-secret-key-change-in-production-min-32-chars"

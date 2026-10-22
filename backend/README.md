@@ -1,4 +1,4 @@
-# AI Procurement & Vendor Intelligence Platform - Backend
+# Sourcyn - AI Procurement & Vendor Intelligence Platform - Backend
 
 Production-ready backend API and asynchronous multi-agent evaluation orchestrator.
 

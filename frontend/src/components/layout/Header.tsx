@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="font-extrabold text-base tracking-tight bg-gradient-to-r from-white via-slate-100 to-[#FAD4C0] bg-clip-text text-transparent">
-                Procura-AI
+                Sourcyn
               </span>
               <span className="bento-badge-peach text-[10px] py-0.5 px-2">
                 Bento v2.0

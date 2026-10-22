@@ -260,6 +260,7 @@ export default function App() {
           {/* Bento Card 4: Deterministic Vendor Comparison Scorecard & Charts (2 cols) */}
           <ScorecardCard
             scorecard={scorecard}
+            decisionExplanation={decisionExplanation}
             onSelectVendor={(v) => {
               setLiveLogs((prev) => [
                 `[${new Date().toLocaleTimeString()}] Selected vendor: ${v.vendor_name} (Rank #${v.rank}, Score ${v.overall_score})`,
@@ -295,7 +296,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Lock className="w-3.5 h-3.5 text-[#FAD4C0]" />
-            <span>Procura-AI Enterprise • Multi-Tenant Tenant Isolation & Row-Level Security</span>
+            <span>Sourcyn Enterprise • Multi-Tenant Tenant Isolation & Row-Level Security</span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <span>WCAG 2.2 AA Compliant</span>

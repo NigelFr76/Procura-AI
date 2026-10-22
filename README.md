@@ -1,6 +1,6 @@
-# AI Procurement & Vendor Intelligence Platform
+# Sourcyn - AI Procurement & Vendor Intelligence Platform
 
-A multi-agent procurement intelligence platform powered by LangGraph, FastAPI, and React.
+Sourcyn is a multi-agent procurement intelligence platform powered by LangGraph, FastAPI, and React.
 
 ## Key Capabilities
 - **Requirement Analysis**: Natural-language specification extraction and clarification loops.
@@ -10,7 +10,7 @@ A multi-agent procurement intelligence platform powered by LangGraph, FastAPI, a
 - **Human-in-the-Loop Governance**: Approval checkpoint gating before purchase order commitment.
 
 ## Architecture & Implementation Roadmap
-See [IMPLEMENTATION_PLAN.md](file:///Users/kshitiz/Desktop/projects/Multiagent_system/IMPLEMENTATION_PLAN.md) for complete engineering blueprints.
+See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for complete engineering blueprints.
 
 ## Local Infrastructure
 ```bash
